@@ -1,4 +1,4 @@
-# app/config/parameters.yml
+# app/config/parameters.yml.dist
 parameters:
   endpoint:
     url: http://tools.referralsolutionsgroup.com/meetings-api/v1/
