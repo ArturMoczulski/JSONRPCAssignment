@@ -7,5 +7,10 @@
             "email": "artur.moczulski@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "fguillot/json-rpc": "dev-master",
+        "phpunit/phpunit": "~4.4",
+        "symfony/console": "~2.6",
+        "symfony/monolog-bundle": "~2.6"
+    }
 }
