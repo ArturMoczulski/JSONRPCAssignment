@@ -9,6 +9,6 @@ namespace JSONRPCAssignment\MeetingsAPI;
 /**
  * Used for API calls to the endpoint
  */
-abstract class Request
+abstract class AbstractRequest
 {
 }
