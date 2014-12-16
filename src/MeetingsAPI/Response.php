@@ -7,8 +7,8 @@
 namespace MeetingsAPI;
 
 /**
- * An PHP wrapper around the "byLocals" method of the MeetingsAPI
+ * The response received from the MettingsAPI endpoint
  */
-class ByLocals extends Request
+class Response
 {
 }

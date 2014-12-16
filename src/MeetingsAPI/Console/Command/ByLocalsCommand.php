@@ -4,7 +4,7 @@
  * Artur Moczulski <artur.moczulski@gmail.com>
  */
 
-namespace JSONRPCAssignment\Command\ByLocalsCommand;
+namespace MeetingsAPI\Command\ByLocalsCommand;
 
 /**
  * ByLocals command is a CLI wrapper for the "byLocals" method of
