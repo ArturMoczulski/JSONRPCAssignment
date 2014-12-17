@@ -34,20 +34,26 @@ class ByLocalsCommand extends Command
         InputArgument::REQUIRED,
         'What city do you want to search in?'
       )
+      ->addArgument(
+        'day',
+        InputArgument::REQUIRED,
+        'For what day of the week? (monday, tuesday, wednesday, thursday, friday, saturday, sunday)'
+      )
       /**
-       * @todo add day of the week argument
        * @todo separate business logic from obtaining data: put sorting and day of the week filtering separately
        */
     ;
   }
 
   protected function execute(InputInterface $input, OutputInterface $output) {
-    $result = ByLocals::call(
+    $meetings = ByLocals::call(
       $input->getArgument('stateAbbr'),
       $input->getArgument('city')
     );
 
-    foreach ($result as $location) {
+    $meetings->filterByDayOfWeek($input->getArgument('day'));
+
+    foreach ($meetings->collection as $location) {
       $output->writeln($location->toString());
     }
   }

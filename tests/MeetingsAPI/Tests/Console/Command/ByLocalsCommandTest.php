@@ -40,7 +40,8 @@ class ByLocalsCommandTest extends GuzzleTestCase
       array(
         'command' => $cmd->getName(),
         'city' => $testData['args']['city'],
-        'stateAbbr' => $testData['args']['state_abbr']
+        'stateAbbr' => $testData['args']['state_abbr'],
+        'day' => $testData['args']['day']
       )
     );
 
@@ -57,7 +58,8 @@ class ByLocalsCommandTest extends GuzzleTestCase
         array(
           'args' => array(
             'state_abbr' => 'CA',
-            'city' => 'San Diego'
+            'city' => 'San Diego',
+            'day' => 'monday'
           ),
           'mock' => array(
             'status' => 200,
@@ -92,32 +94,6 @@ class ByLocalsCommandTest extends GuzzleTestCase
             "id":15455,
             "day":"monday",
             "hour":1930
-         }
-      },
-      {  
-         "id":60955,
-         "time_id":15414,
-         "address_id":25476,
-         "type":"MeetingItem",
-         "details":"Format: Contact: Rosalinda - 619-992-5974",
-         "meeting_type":"OA",
-         "meeting_name":"Scripps Hospital",
-         "language":"English",
-         "raw_address":"Scripps Hospital, 499 H St, Chula Vista, , CA",
-         "location":"Scripps Hospital",
-         "address":{  
-            "id":25476,
-            "street":"",
-            "zip":"91914",
-            "city":"Chula Vista",
-            "state_abbr":"CA",
-            "lat":"32.656159",
-            "lng":"-116.966139"
-         },
-         "time":{  
-            "id":15414,
-            "day":"tuesday",
-            "hour":1900
          }
       }
     ]

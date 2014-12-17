@@ -8,6 +8,7 @@ namespace MeetingsAPI\Requests;
 
 use MeetingsAPI\Response;
 use MeetingsAPI\Data\Meeting;
+use MeetingsAPI\Data\Meetings;
 
 /**
  * An PHP wrapper around the "byLocals" method of the MeetingsAPI
@@ -32,13 +33,13 @@ class ByLocals extends AbstractRequest
    * object mapping
    * @param array $args
    * @param Response $response
-   * @return array Array of Meeting objects
+   * @return Meetings
    */
   public static function doLogic($args, Response $response) {
     $meetings = array();
     foreach ($response->content() as $meetingData) {
       $meetings [$meetingData['id']]= new Meeting($meetingData);
     }
-    return $meetings;
+    return new Meetings($meetings);
   }
 }

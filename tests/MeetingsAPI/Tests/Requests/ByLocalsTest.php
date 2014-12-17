@@ -40,8 +40,8 @@ class ByLocalsTest extends GuzzleTestCase
     $jsonMock = json_decode($testData['mock']['body'],true);
 
     foreach ($jsonMock['result'] as $meetingData) {
-      $this->assertArrayHasKey($meetingData['id'], $meetings);
-      $meeting = $meetings[$meetingData['id']];
+      $this->assertArrayHasKey($meetingData['id'], $meetings->collection);
+      $meeting = $meetings->collection[$meetingData['id']];
       $this->assertInstanceOf('\MeetingsAPI\Data\Meeting', $meeting);
       foreach ($meetingData as $attrName => $attrVal) {
         $this->assertEquals($attrVal, $meeting->$attrName);
