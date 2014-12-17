@@ -35,7 +35,7 @@ class ByLocalsTest extends GuzzleTestCase
     $this->getServer()->enqueue(array($mock));
     ByLocals::$ENDPOINT_URL = $this->getServer()->getUrl();
 
-    $response = ByLocals::call($testData['args']);
+    $response = ByLocals::call($testData['args']['state_abbr'], $testData['args']['city']);
 
     $this->assertInstanceOf('\MeetingsAPI\Response', $response);
 

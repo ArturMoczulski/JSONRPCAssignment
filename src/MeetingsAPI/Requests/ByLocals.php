@@ -14,4 +14,16 @@ use MeetingsAPI\Response;
 class ByLocals extends AbstractRequest
 {
   public static function getAPIMethodName() { return 'byLocals'; }
+
+  /**
+   * @param string stateAbbr
+   * @param string city
+   * @return mixed
+   */
+  public static function call($stateAbbr, $city) {
+    return parent::call(array(
+      'state_abbr' => $stateAbbr,
+      'city' => $city
+    ));
+  }
 }
