@@ -14,11 +14,4 @@ use MeetingsAPI\Response;
 class ByLocals extends AbstractRequest
 {
   public static function getAPIMethodName() { return 'byLocals'; }
-
-  /**
-   * business logic: sort the locations by distance
-   */
-  public static function doLogic(Response $response) {
-    return $response;
-  }
 }

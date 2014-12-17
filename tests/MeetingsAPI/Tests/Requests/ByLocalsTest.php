@@ -7,7 +7,6 @@
 namespace MeetingsAPI\Tests\Requests;
 
 use MeetingsAPI\Requests\ByLocals;
-use MeetingsAPI\Tests\MockServerTestCase;
 use Guzzle\Tests\GuzzleTestCase;
 use Guzzle\Http\Message\Response as GuzzleResponse;
 
