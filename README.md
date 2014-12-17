@@ -1,7 +1,7 @@
 MeetingsAPI
 ==================
 
-A project made for a test assignment
+A project made for a test assignment.
 
 ```usage
 php src/application.php api:byLocals "[city]" "[state abbreviation]" "[day of the week, i.e. monday]" "[address to sort by]"
@@ -121,4 +121,33 @@ Sample Response
       ...
     ]
 }
-````
+```
+
+The solution
+==================
+Libraries used:
+* https://github.com/fguillot/JsonRPC : communication with the API endpoint
+* symfony/console : CLI UI frontend
+* https://github.com/anthonymartin/GeoLocation.php : obtaining address locations and distance sorting
+
+Dependencies used for development:
+* PHPUnit : unit testing
+* Guzzle : unit testing the communication with the API endpoint using
+* Node.js : mock server for unit testing communication with the API endpoint
+
+Implementation
+-----------------
+### MeetingsAPI\Requests\ByLocals
+
+This is the main PHP API wrapper for the "byLocals" method of the end point. It's solely responsible
+for communication with the endpoint and does not contain any additional logic.
+
+### MeetingsAPI\Data\Meetings
+
+It's the collection object used to store Meeting data objects. It is somewhat smart as it
+contains the business logic for filtering and sorting the meetings.
+
+### MeetingsAPI\Console\Command\ByLocalsCommand
+
+The UI frontend for the library. See the top of this file to find the syntax of the command.
+The examples/ directory contains particular use cases.
