@@ -11,4 +11,18 @@ namespace MeetingsAPI;
  */
 class Response
 {
+
+  /**
+   * @var array
+   */
+  protected $content;
+
+  public function __construct($content) {
+    $this->content = $content;
+  }
+
+  /**
+   * @return array
+   */
+  public function content() { return $this->content; }
 }
