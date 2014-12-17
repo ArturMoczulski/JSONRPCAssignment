@@ -27,7 +27,7 @@ class ByLocalsTest extends GuzzleTestCase
    * @dataProvider providerCall
    * @group mockserver
    */
-  public function testCall($testData) {
+  public function testExecute($testData) {
     $mock = new GuzzleResponse($testData['mock']['status']);
     $mock->setBody($testData['mock']['body']);
     foreach( $testData['mock']['headers'] as $header ) {

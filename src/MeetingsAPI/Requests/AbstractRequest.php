@@ -31,7 +31,7 @@ abstract class AbstractRequest
    * @param Response $response
    * @return mixed
    */
-  protected static function doLogic(Response $response) { return null; }
+  protected static function doLogic(Response $response) { return $response; }
 
   /**
    * perform an API call and additional server-side business logic
