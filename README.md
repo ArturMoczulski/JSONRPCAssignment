@@ -14,8 +14,10 @@ Installation
 
 If you are planning on running the unit tests or developing you will have to follow the steps:
 
-1. Make sure your current working directory is the root directory of the project.
-
+1. Clone the repository
+```
+git clone https://github.com/ArturMoczulski/meetingsapi.git && cd meetingsapi/
+```
 2. Download and install composer for the project if you don't have it installed globally in your OS:
 ```
 curl -sS https://getcomposer.org/installer | php
