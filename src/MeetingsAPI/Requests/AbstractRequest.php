@@ -20,7 +20,6 @@ abstract class AbstractRequest
   public static $PASSWORD = "";
 
   abstract public static function getAPIMethodName();
-  //abstract public static function execute($args = array(), $url = "");
 
   /**
    * private constructor ensures the use of the call() factory method
@@ -28,12 +27,28 @@ abstract class AbstractRequest
   private function __construct() {}
 
   /**
-   * performing an API call; also a factory method for Response objects
+   * additional server-side business logic
+   * @param Response $response
+   * @return mixed
+   */
+  protected static function doLogic(Response $response) { return null; }
+
+  /**
+   * perform an API call and additional server-side business logic
    * @param array $args
-   * @param $url (optional)
+   * @return mixed
+   */
+  public static function execute($args = array()) {
+    $response = static::call($args);
+    return static::doLogic($response);
+  }
+
+  /**
+   * perform an API call; also a factory method for Response objects
+   * @param array $args
    * @return Response
    */
-  public static function call($args = array()) {
+  protected static function call($args = array()) {
     $url = $url ? $url : static::$ENDPOINT_URL;
     $request = new static();
     $client = new Client($url);

@@ -18,7 +18,6 @@ class ByLocalsTest extends \PHPUnit_Framework_TestCase
     $expected = array("foo");
     $response = new Response($expected);
     $this->assertEquals($expected, $response->content());
-
   }
 
 }
