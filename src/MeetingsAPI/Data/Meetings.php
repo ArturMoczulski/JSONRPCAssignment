@@ -6,6 +6,8 @@
 
 namespace MeetingsAPI\Data;
 
+use AnthonyMartin\GeoLocation\GeoLocation;
+
 /**
  * A class for representing meetings DAO
  */
@@ -29,9 +31,35 @@ class Meetings
   }
 
   /**
-   * @param array $from Location from which to sort
+   * @param string $from Sort based on distance from this address
+   * @param bool $asc (default: true)
    */
-  public static function sortByDistance($from, $asc = true) {
+  public function sortByDistance($from, $asc = true) {
+    $from = GeoLocation::getGeocodeFromGoogle($from);
+
+    if (!isset($from->results[0]) ) {
+      throw new \Exception('Unable to find address through Google Maps API');
+    }
+
+    $from = GeoLocation::fromDegrees(
+      $from->results[0]->geometry->lat,
+      $from->results[0]->geometry->lng
+    );
+
+    usort($this->collection, function($a, $b) use ($from, $asc) {
+      $a = GeoLocation::fromDegrees($a->address['lat'], $a->address['lng']);
+      $b = GeoLocation::fromDegrees($b->address['lat'], $b->address['lng']);
+      $units = 'miles';
+
+      if ($from->distanceTo($a,$units) < $from->distanceTo($b,$units)) {
+        return $asc ? 1 : -1;
+      } else if ($from->distanceTo($a,$units) == $from->distanceTo($b,$units)) {
+        return 0;
+      } else {
+        return $asc ? -1 : 1;
+      }
+    });
+
   }
 
   /**

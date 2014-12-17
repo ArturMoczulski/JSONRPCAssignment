@@ -41,7 +41,8 @@ class ByLocalsCommandTest extends GuzzleTestCase
         'command' => $cmd->getName(),
         'city' => $testData['args']['city'],
         'stateAbbr' => $testData['args']['state_abbr'],
-        'day' => $testData['args']['day']
+        'day' => $testData['args']['day'],
+        'from' => $testData['args']['from']
       )
     );
 
@@ -59,7 +60,11 @@ class ByLocalsCommandTest extends GuzzleTestCase
           'args' => array(
             'state_abbr' => 'CA',
             'city' => 'San Diego',
-            'day' => 'monday'
+            'day' => 'monday',
+            'from' => '
+517 4th Ave.
+San Diego, CA 92101
+            '
           ),
           'mock' => array(
             'status' => 200,

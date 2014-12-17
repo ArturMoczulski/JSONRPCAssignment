@@ -11,7 +11,8 @@
         "fguillot/json-rpc": "dev-master",
         "symfony/console": "~2.6",
         "symfony/yaml": "~2.6",
-        "symfony/config": "~2.6"
+        "symfony/config": "~2.6",
+        "anthonymartin/geo-location": "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.4",

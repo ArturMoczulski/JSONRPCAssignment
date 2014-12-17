@@ -15,10 +15,10 @@ class MeetingsTest extends \PHPUnit_Framework_TestCase
    * @dataProvider providerSortByDistance
    */
   public function testSortByDistance($testData, $expected) {
-    $meetings = new Meetings($testsData['meetings']);
-    $meetings->sortByDistance(array());
+    $meetings = new Meetings($testData['meetings']);
+    $meetings->sortByDistance($testData['location'], $testData['asc']);
     $order = 0;
-    foreach ($meetings as $meeting) {
+    foreach ($meetings->collection as $meeting) {
       $this->assertEquals($expected[$order], $meeting->id);
       $order++;
     }
@@ -28,33 +28,21 @@ class MeetingsTest extends \PHPUnit_Framework_TestCase
     $data = $this->providerMeetings();
     $data = array(
       array( // Test 1
-        array( // Params
-          array( // Param 1
-            'meetings' => $data,
-          ), // -- Param 1
-          array(60594, 60595) // -- Param 2
-        ), // -- Params
+        array( // Param 1
+          'meetings' => $data,
+          'location' => '517 4th Ave.  San Diego, CA 92101',
+          'asc' => true
+        ), // -- Param 1
+        array(60954, 60955) // -- Param 2
       ), // -- Test 1
-
       array( // Test 2
-        array( // Params
-          array( // Param 1
-            'meetings' => $data,
-            'day' => 'tuesday'
-          ), // -- Param 1
-          array(60594, 60595) // -- Param 2
-        ), // -- Params
+        array( // Param 1
+          'meetings' => $data,
+          'location' => '517 4th Ave.  San Diego, CA 92101',
+          'asc' => false
+        ), // -- Param 1
+        array(60955, 60954) // -- Param 2
       ), // -- Test 2
-
-      array( // Test 3
-        array( // Params
-          array( // Param 1
-            'meetings' => $data,
-            'day' => 'tuesday'
-          ), // -- Param 1
-          array(60594, 60595) // -- Param 2
-        ), // -- Params
-      ), // -- Test 3
     );
     return $data;
   }
@@ -112,7 +100,7 @@ class MeetingsTest extends \PHPUnit_Framework_TestCase
 
   public function providerMeetings() {
     return array(
-      array(
+      array( // 12.2 miles away from 517 4th Ave
         'id' => 60954,
         'time_id' => 15455,
         'address_id' => 25475,
@@ -140,7 +128,7 @@ class MeetingsTest extends \PHPUnit_Framework_TestCase
           'hour' => 1930,
         ),
       ),
-      array (
+      array ( // 18.6 miles away from 517 4th Ave
         'id' => 60955,
         'time_id' => 15414,
         'address_id' => 25476,
