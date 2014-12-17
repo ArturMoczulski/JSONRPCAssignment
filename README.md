@@ -24,7 +24,6 @@ curl -sS https://getcomposer.org/installer | php
 ```
 The rest of the steps assume that you did not have composer globally and used the above command. If
 that's not the case adjust next steps accordingly to your setup.
-
 3. Install dependencies through Composer:
 ```
 php composer.phar install
