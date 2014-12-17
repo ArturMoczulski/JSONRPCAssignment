@@ -11,6 +11,7 @@ namespace MeetingsAPI\Data;
  */
 class Meeting
 {
+
   /**
    * @param array $data Data as decoded from JSON
    */

@@ -34,6 +34,10 @@ class ByLocalsCommand extends Command
         InputArgument::REQUIRED,
         'What city do you want to search in?'
       )
+      /**
+       * @todo add day of the week argument
+       * @todo separate business logic from obtaining data: put sorting and day of the week filtering separately
+       */
     ;
   }
 
