@@ -28,19 +28,20 @@ abstract class AbstractRequest
 
   /**
    * additional server-side business logic
+   * @param array $args
    * @param Response $response
    * @return mixed
    */
-  protected static function doLogic(Response $response) { return $response; }
+  protected static function doLogic($args, Response $response) { return $response; }
 
   /**
    * perform an API call and additional server-side business logic
    * @param array $args
    * @return mixed
    */
-  public static function execute($args = array()) {
-    $response = static::call($args);
-    return static::doLogic($response);
+  public static function call($args = array()) {
+    $response = static::doCall($args);
+    return static::doLogic($args, $response);
   }
 
   /**
@@ -48,7 +49,7 @@ abstract class AbstractRequest
    * @param array $args
    * @return Response
    */
-  protected static function call($args = array()) {
+  protected static function doCall($args = array()) {
     $url = $url ? $url : static::$ENDPOINT_URL;
     $request = new static();
     $client = new Client($url);
