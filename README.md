@@ -24,6 +24,7 @@ curl -sS https://getcomposer.org/installer | php
 ```
 The rest of the steps assume that you did not have composer globally and used the above command. If
 that's not the case adjust next steps accordingly to your setup.
+
 3. Install dependencies through Composer:
 ```
 php composer.phar install
@@ -37,7 +38,7 @@ in examples/. You can run the solution by following the steps:
 1. Change directory to the root directory of the project
 2. Run:
 ```
-/usr/bin/env examples/monday_517_4th_Ave.sh
+/usr/bin/env php examples/monday_517_4th_Ave.sh
 ```
 
 This shell script is just an invocation of the main CLI front-end with hardcoded arguments.
