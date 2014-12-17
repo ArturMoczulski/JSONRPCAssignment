@@ -10,6 +10,22 @@ use MeetingsAPI\Data\Meeting;
 
 class MeetingTest extends \PHPUnit_Framework_TestCase
 {
+  /**
+   * @covers Meeting::toString
+   * @dataProvider providerToString
+   */
+  public function testToString($data) {
+    $meeting = new Meeting($data);
+    $this->assertEquals("$data[meeting_name]: $data[raw_address]", $meeting->toString());
+  }
+
+  public function providerToString() {
+    $data = $this->providerConstruct();
+    foreach ($data as $i => $meeting) {
+      $data[$i]['expected'] = "$meeting[meeting_name]: $meeting[raw_address]";
+    }
+    return $data;
+  }
 
   /**
    * @covers Meeting::__construct

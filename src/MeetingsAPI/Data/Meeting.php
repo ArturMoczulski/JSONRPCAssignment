@@ -19,4 +19,9 @@ class Meeting
       $this->$attrName = $attrVal;
     }
   }
+
+  public function toString() {
+    return $this->meeting_name.": ".$this->raw_address;
+  }
+
 }

@@ -4,29 +4,25 @@
  * Artur Moczulski <artur.moczulski@gmail.com>
  */
 
-namespace MeetingsAPI\Tests\Requests;
+namespace MeetingsAPI\Tests\Console\Command;
 
+use MeetingsAPI\Tests\Requests\ByLocalsTest;
 use MeetingsAPI\Requests\ByLocals;
+use MeetingsAPI\Console\Command\ByLocalsCommand;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Tester\CommandTester;
 use Guzzle\Tests\GuzzleTestCase;
 use Guzzle\Http\Message\Response as GuzzleResponse;
 
-class ByLocalsTest extends GuzzleTestCase
+class ByLocalsCommandTest extends GuzzleTestCase
 {
 
   /**
-   * @covers \MeetingsAPI\Requests\ByLocals::getAPIMethodName
+   * @covers ByLocalsCommand::execute
+   * @dataProvider providerExecute
    */
-  public function testGetAPIMethodName() {
-    $this->assertEquals('byLocals', ByLocals::getAPIMethodName());
-  }
+  public function testExecute($testData) {
 
-  /**
-   * This test cases uses Guzzle's mock server to mock server responses.
-   * @covers \MeetingsAPI\Requests\ByLocals::call
-   * @dataProvider providerCall
-   * @group mockserver
-   */
-  public function testCall($testData) {
     $mock = new GuzzleResponse($testData['mock']['status']);
     $mock->setBody($testData['mock']['body']);
     foreach( $testData['mock']['headers'] as $header ) {
@@ -35,21 +31,27 @@ class ByLocalsTest extends GuzzleTestCase
     $this->getServer()->enqueue(array($mock));
     ByLocals::$ENDPOINT_URL = $this->getServer()->getUrl();
 
-    $meetings = ByLocals::call($testData['args']['state_abbr'], $testData['args']['city']);
+    $app = new Application();
+    $app->add(new ByLocalsCommand());
+
+    $cmd = $app->find('api:byLocals');
+    $cmdTester = new CommandTester($cmd);
+    $cmdTester->execute(
+      array(
+        'command' => $cmd->getName(),
+        'city' => $testData['args']['city'],
+        'stateAbbr' => $testData['args']['state_abbr']
+      )
+    );
 
     $jsonMock = json_decode($testData['mock']['body'],true);
 
     foreach ($jsonMock['result'] as $meetingData) {
-      $this->assertArrayHasKey($meetingData['id'], $meetings);
-      $meeting = $meetings[$meetingData['id']];
-      $this->assertInstanceOf('\MeetingsAPI\Data\Meeting', $meeting);
-      foreach ($meetingData as $attrName => $attrVal) {
-        $this->assertEquals($attrVal, $meeting->$attrName);
-      }
+      $this->assertRegExp('/'.$meetingData['meeting_name'].': '.$meetingData['meeting_name'].'/', $cmdTester->getDisplay());
     }
   }
 
-  public function providerCall() {
+  public function providerExecute() {
     return array(
       array(
         array(

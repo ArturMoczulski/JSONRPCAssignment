@@ -22,7 +22,7 @@ class ByLocalsCommand extends Command
 {
   protected function configure() {
     $this
-      ->setName('api:ByLocals')
+      ->setName('api:byLocals')
       ->setDescription('CLI wrapper for byLocals of the MeetingsAPI')
       ->addArgument(
         'stateAbbr',
@@ -44,7 +44,7 @@ class ByLocalsCommand extends Command
     );
 
     foreach ($result as $location) {
-      $output->writeln($location);
+      $output->writeln($location->toString());
     }
   }
 }
