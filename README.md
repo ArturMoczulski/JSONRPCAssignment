@@ -4,7 +4,7 @@ MeetingsAPI
 A project made for a test assignment
 
 ```usage
-php src/application.php api:byLocals "[city]" "[state abbreviation]"
+php src/application.php api:byLocals "[city]" "[state abbreviation]" "[day of the week, i.e. monday]" "[address to sort by]"
 ```
 
 The assignment

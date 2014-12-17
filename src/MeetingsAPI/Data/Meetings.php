@@ -23,9 +23,9 @@ class Meetings
     $this->collection = array();
     foreach ($collection as $entry) {
       if ($entry instanceof Meeting) {
-        $this->collection []= $entry;
+        $this->collection [$entry->id]= $entry;
       } else {
-        $this->collection []= new Meeting($entry);
+        $this->collection [$entry['id']]= new Meeting($entry);
       }
     }
   }
@@ -67,7 +67,7 @@ class Meetings
    */
   public function filterByDayOfWeek($day) {
     foreach ($this->collection as $key => $meeting) {
-      if ($meeting->time['day'] != $day) {
+      if (strtolower($meeting->time['day']) != strtolower($day)) {
         unset($this->collection[$key]);
       }
     }

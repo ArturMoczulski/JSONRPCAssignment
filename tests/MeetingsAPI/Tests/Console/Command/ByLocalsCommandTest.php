@@ -42,7 +42,7 @@ class ByLocalsCommandTest extends GuzzleTestCase
         'city' => $testData['args']['city'],
         'stateAbbr' => $testData['args']['state_abbr'],
         'day' => $testData['args']['day'],
-        'from' => $testData['args']['from']
+        'fromAddress' => $testData['args']['from']
       )
     );
 
@@ -60,7 +60,7 @@ class ByLocalsCommandTest extends GuzzleTestCase
           'args' => array(
             'state_abbr' => 'CA',
             'city' => 'San Diego',
-            'day' => 'monday',
+            'day' => 'Monday',
             'from' => '
 517 4th Ave.
 San Diego, CA 92101

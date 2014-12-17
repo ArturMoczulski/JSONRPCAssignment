@@ -40,7 +40,7 @@ class ByLocalsCommand extends Command
         'For what day of the week? (monday, tuesday, wednesday, thursday, friday, saturday, sunday)'
       )
       ->addArgument(
-        'from',
+        'fromAddress',
         InputArgument::REQUIRED,
         'Sort by distance from what address?'
       )
@@ -54,7 +54,7 @@ class ByLocalsCommand extends Command
     );
 
     $meetings->filterByDayOfWeek($input->getArgument('day'));
-    $meetings->sortByDistance($input->getArgument('from'));
+    $meetings->sortByDistance($input->getArgument('fromAddress'));
 
     foreach ($meetings->collection as $location) {
       $output->writeln($location->toString());
