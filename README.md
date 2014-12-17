@@ -1,9 +1,11 @@
 MeetingsAPI
 ==================
 
+Usage
+=====
 A project made for a test assignment.
 
-```usage
+```
 php bin/meetingsapi.php api:byLocals "[city]" "[state abbreviation]" "[day of the week, i.e. monday]" "[address to sort by]"
 ```
 
