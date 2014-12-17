@@ -44,7 +44,7 @@ class ByLocalsCommand extends Command
     );
 
     foreach ($result as $location) {
-      $output->writeln($location->toString());
+      $output->writeln($location);
     }
   }
 }
