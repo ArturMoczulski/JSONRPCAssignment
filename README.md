@@ -4,7 +4,7 @@ MeetingsAPI
 A project made for a test assignment.
 
 ```usage
-php src/application.php api:byLocals "[city]" "[state abbreviation]" "[day of the week, i.e. monday]" "[address to sort by]"
+php bin/meetingsapi.php api:byLocals "[city]" "[state abbreviation]" "[day of the week, i.e. monday]" "[address to sort by]"
 ```
 
 The assignment
@@ -151,3 +151,35 @@ contains the business logic for filtering and sorting the meetings.
 
 The UI frontend for the library. See the top of this file to find the syntax of the command.
 The examples/ directory contains particular use cases.
+
+Installation
+============
+
+If you are planning on running the unit tests or developing you will have to follow the steps:
+
+1. Make sure your current working directory is the root directory of the project.
+
+2. Download and install composer for the project if you don't have it installed globally in your OS:
+```
+curl -sS https://getcomposer.org/installer | php
+```
+The rest of the steps assume that you did not have composer globally and used the above command. If
+that's not the case adjust next steps accordingly to your setup.
+
+3. Install dependencies through Composer:
+```
+php composer.phar install
+```
+
+Examples
+========
+
+An examplee of using the CLI front-end which is the solution to task in the assignment can be found
+in examples/. You can run the solution by following the steps:
+1. Change directory to the root directory of the project
+2. Run:
+```
+/usr/bin/env examples/monday_517_4th_Ave.sh
+```
+
+This shell script is just an invocation of the main CLI front-end with hardcoded arguments.
