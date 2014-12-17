@@ -10,7 +10,6 @@
     "require": {
         "fguillot/json-rpc": "dev-master",
         "symfony/console": "~2.6",
-        "symfony/monolog-bundle": "~2.6",
         "symfony/yaml": "~2.6",
         "symfony/config": "~2.6"
     },

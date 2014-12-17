@@ -35,16 +35,18 @@ class ByLocalsTest extends GuzzleTestCase
     $this->getServer()->enqueue(array($mock));
     ByLocals::$ENDPOINT_URL = $this->getServer()->getUrl();
 
-    $response = ByLocals::call($testData['args']['state_abbr'], $testData['args']['city']);
+    $meetings = ByLocals::call($testData['args']['state_abbr'], $testData['args']['city']);
 
-    $this->assertInstanceOf('\MeetingsAPI\Response', $response);
+    $jsonMock = json_decode($testData['mock']['body'],true);
 
-    $json_mock = json_decode($testData['mock']['body'],true);
-    $this->assertEquals(
-      $json_mock['result'],
-      $response->content(),
-      "Actual response doesn't match the expected mock response."
-    );
+    foreach ($jsonMock['result'] as $meetingData) {
+      $this->assertArrayHasKey($meetingData['id'], $meetings);
+      $meeting = $meetings[$meetingData['id']];
+      $this->assertInstanceOf('\MeetingsAPI\Data\Meeting', $meeting);
+      foreach ($meetingData as $attrName => $attrVal) {
+        $this->assertEquals($attrVal, $meeting->$attrName);
+      }
+    }
   }
 
   public function providerCall() {

@@ -6,8 +6,10 @@
 
 namespace MeetingsAPI\Console\Command;
 
+use MeetingsAPI\Requests\ByLocals;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -22,10 +24,27 @@ class ByLocalsCommand extends Command
     $this
       ->setName('api:ByLocals')
       ->setDescription('CLI wrapper for byLocals of the MeetingsAPI')
+      ->addArgument(
+        'stateAbbr',
+        InputArgument::REQUIRED,
+        'What state? (provide abbreviation)'
+      )
+      ->addArgument(
+        'city',
+        InputArgument::REQUIRED,
+        'What city do you want to search in?'
+      )
     ;
   }
 
   protected function execute(InputInterface $input, OutputInterface $output) {
-    $output->writeln('byLocals');
+    $result = ByLocals::call(
+      $input->getArgument('stateAbbr'),
+      $input->getArgument('city')
+    );
+
+    foreach ($result as $location) {
+      $output->writeln($location);
+    }
   }
 }
