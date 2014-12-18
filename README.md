@@ -15,7 +15,7 @@ Installation
 If you are planning on running the unit tests or developing you will have to follow the steps:
 
 1. Clone the repository
-2. 2. Download and install composer for the project if you don't have it installed globally in your OS:
+2. Download and install composer for the project if you don't have it installed globally in your OS:
 3. Install dependencies through Composer.
 
 Below command line instructions assume that you did not have composer globally and used the above command. If
