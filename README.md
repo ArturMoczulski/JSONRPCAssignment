@@ -35,7 +35,7 @@ in examples/. You can run the solution by following the steps:
 1. Change directory to the root directory of the project
 2. Run:
 ```
-/usr/bin/env php examples/monday_517_4th_Ave.sh
+/usr/bin/env sh examples/monday_517_4th_Ave.sh
 ```
 
 This shell script is just an invocation of the main CLI front-end with hardcoded arguments.
