@@ -15,18 +15,15 @@ Installation
 If you are planning on running the unit tests or developing you will have to follow the steps:
 
 1. Clone the repository
-```
-git clone https://github.com/ArturMoczulski/meetingsapi.git && cd meetingsapi/
-```
-2. Download and install composer for the project if you don't have it installed globally in your OS:
-```
-curl -sS https://getcomposer.org/installer | php
-```
-The rest of the steps assume that you did not have composer globally and used the above command. If
+2. 2. Download and install composer for the project if you don't have it installed globally in your OS:
+3. Install dependencies through Composer.
+
+Below command line instructions assume that you did not have composer globally and used the above command. If
 that's not the case adjust next steps accordingly to your setup.
 
-3. Install dependencies through Composer:
 ```
+git clone https://github.com/ArturMoczulski/meetingsapi.git && cd meetingsapi/
+curl -sS https://getcomposer.org/installer | php
 php composer.phar install
 ```
 
