@@ -28,7 +28,7 @@ php composer.phar install
 Examples
 ========
 
-An examplee of using the CLI front-end which is the solution to task in the assignment can be found
+An example of using the CLI front-end which is the solution to task in the assignment can be found
 in examples/. You can run the solution by following the steps:
 1. Change directory to the root directory of the project
 2. Run:
