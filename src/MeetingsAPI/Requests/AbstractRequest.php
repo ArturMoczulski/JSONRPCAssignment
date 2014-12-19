@@ -17,7 +17,7 @@ abstract class AbstractRequest
 
   public static $ENDPOINT_URL = "http://tools.referralsolutionsgroup.com/meetings-api/v1/";
   public static $USERNAME = "oXO8YKJUL2X3oqSpFpZ5";
-  public static $PASSWORD = "";
+  public static $PASSWORD = "JaiXo2lZRJVn5P4sw0bt";
 
   abstract public static function getAPIMethodName();
 
