@@ -13,11 +13,11 @@ Installation
 ============
 
 1. Clone the repository
-2. Download and install composer for the project if you don't have it installed globally in your OS:
+2. Download and install composer for the project if you don't have it installed globally in your OS.
 3. Install dependencies through Composer.
 
-Below command line instructions assume that you did not have composer globally and used the above command. If
-that's not the case adjust next steps accordingly to your setup.
+Below command line instructions assume that you do not have composer installed globally. If
+that's not the case adjust the steps accordingly to your setup.
 
 ```
 git clone https://github.com/ArturMoczulski/meetingsapi.git && cd meetingsapi/
