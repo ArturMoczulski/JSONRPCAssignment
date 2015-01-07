@@ -23,10 +23,10 @@ class ByLocals extends AbstractRequest
    * @return Meeting
    */
   public static function call($stateAbbr, $city) {
-    return parent::call(array(
+    return parent::call(array(array(array(
       'state_abbr' => $stateAbbr,
       'city' => $city
-    ));
+    ))));
   }
 
   /**

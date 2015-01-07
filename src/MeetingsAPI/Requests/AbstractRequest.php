@@ -53,13 +53,14 @@ abstract class AbstractRequest
     $url = $url ? $url : static::$ENDPOINT_URL;
     $request = new static();
     $client = new Client($url);
+    $client->debug = true;
     $client->authentication(static::$USERNAME, static::$PASSWORD);
     $result = $client->execute($request->getAPIMethodName(), $args);
 
     if( $result ) {
       return new Response($result);
     } else {
-      throw new \Exception("MettingsAPI: no repsponse for request ".print_r($request, true));
+      throw new \Exception("MettingsAPI: empty response receivd from the endpoint for request ".print_r($request, true));
     }
   }
 }
